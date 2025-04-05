@@ -1,8 +1,7 @@
-// server.js
 const express = require("express")
+const cors = require("cors")
 const http = require("http")
 const { Server } = require("socket.io")
-const cors = require("cors")
 
 const app = express()
 app.use(cors())
@@ -41,8 +40,13 @@ io.on("connection", (socket) => {
       socket.join(roomID)
       console.log(`${socket.id} joined room ${roomID}`)
 
-      // Assign symbols
-      const [playerX, playerO] = rooms[roomID]
+      // Assign symbols randomly
+      const turnToss = Math.floor(Math.random() * 2)
+      if (turnToss === 1) {
+        const [playerX, playerO] = rooms[roomID]
+      } else {
+        const [playerO, playerX] = rooms[roomID]
+      }
       io.to(playerX).emit("player-assigned", "✖️")
       io.to(playerO).emit("player-assigned", "⭕")
 
