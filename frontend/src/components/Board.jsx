@@ -79,7 +79,10 @@ import Square from "./Square"
 import { io } from "socket.io-client"
 
 const Board = () => {
-  const socket = useMemo(() => io("http://localhost:3000"), [])
+  const socket = useMemo(
+    () => io("https://multiplayer-tic-tac-toe-8ypq.onrender.com"),
+    []
+  )
   const [state, setState] = useState(Array(9).fill(null))
   const [xTurn, setXTurn] = useState(true)
   const [mySymbol, setMySymbol] = useState(null)
