@@ -119,7 +119,7 @@ const Board = () => {
             placeholder='Enter Room ID'
             value={inputRoomID}
             onChange={(e) => setInputRoomID(e.target.value)}
-            className='border text-gray-800 px-4 py-2 rounded mx-2'
+            className='border w-1/2 text-gray-800 px-4 py-2 rounded mx-2'
           />
           <button
             onClick={joinRoom}
