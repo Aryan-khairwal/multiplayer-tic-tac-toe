@@ -3,7 +3,10 @@ import Square from "./Square"
 import { io } from "socket.io-client"
 
 const Board = () => {
-  const socket = useMemo(() => io("http://localhost:3000"), [])
+  const socket = useMemo(
+    () => io("https://multiplayer-tic-tac-toe-8ypq.onrender.com"),
+    []
+  )
   const [state, setState] = useState(Array(9).fill(null))
   const [roomID, setRoomID] = useState("")
   const [joinedRoom, setJoinedRoom] = useState(false)
@@ -110,13 +113,13 @@ const Board = () => {
         >
           Create Room
         </button>
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-2 justify-evenly'>
           <input
             type='text'
             placeholder='Enter Room ID'
             value={inputRoomID}
             onChange={(e) => setInputRoomID(e.target.value)}
-            className='border px-4 py-2 rounded'
+            className='border text-gray-800 px-4 py-2 rounded mx-2'
           />
           <button
             onClick={joinRoom}
